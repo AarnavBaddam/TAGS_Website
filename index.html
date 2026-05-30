@@ -143,14 +143,17 @@
 
     .hero-slide.one {
       background-color: #7f1010;
+      background-image: url("assets/slideimg1.png");
     }
 
     .hero-slide.two {
       background-color: #9e1f3f;
+      background-image: url("assets/slideimg2.png");
     }
 
     .hero-slide.three {
       background-color: #6f1d2c;
+      background-image: url("assets/slideimg3.png");
     }
 
     .hero-overlay {
@@ -176,19 +179,49 @@
     }
 
     .hero-mark {
-      width: 72px;
-      height: 72px;
+      width: 112px;
+      height: 112px;
       border-radius: 50%;
       overflow: hidden;
       flex-shrink: 0;
+      background: #ffffff;
     }
 
     .hero-mark img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      clip-path: circle(48% at 50% 52%);
-      transform: scale(1.08);
+      object-fit: contain;
+      object-position: center center;
+      transform: scale(0.94);
+    }
+
+    .slide-arrows {
+      position: absolute;
+      right: 1rem;
+      bottom: 2.45rem;
+      z-index: 3;
+      display: flex;
+      gap: 0.4rem;
+    }
+
+    .slide-arrow {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      background: rgba(0, 0, 0, 0.3);
+      color: var(--white);
+      font-size: 0.92rem;
+      line-height: 1;
+      cursor: pointer;
+      display: grid;
+      place-content: center;
+      transition: background var(--speed), border-color var(--speed);
+    }
+
+    .slide-arrow:hover {
+      background: rgba(0, 0, 0, 0.5);
+      border-color: var(--white);
     }
 
     .hero-kicker {
@@ -357,6 +390,11 @@
       background: var(--white);
     }
 
+    .featured-flier {
+      max-width: 285px;
+      justify-self: end;
+    }
+
     .event-row {
       display: grid;
       grid-template-columns: 88px 1fr;
@@ -405,14 +443,23 @@
     }
 
     .flier-art {
-      min-height: 270px;
+      min-height: 170px;
       border-bottom: 1px solid var(--line);
       background: #f4f0e6;
       color: var(--muted);
-      display: grid;
-      place-content: center;
-      text-align: center;
-      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 0.35rem;
+    }
+
+    .flier-art img {
+      width: auto;
+      height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+      object-position: center;
     }
 
     .flier-art strong {
@@ -498,6 +545,29 @@
       text-align: center;
       color: var(--muted);
       padding: 1rem;
+    }
+
+    .culture-card--perini .perini-single {
+      position: absolute;
+      inset: 0;
+      display: block;
+      background: #101010;
+    }
+
+    .culture-card--perini .perini-single img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .culture-photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .culture-card:nth-child(1) .culture-fill { background: #f7e8e8; }
@@ -651,6 +721,153 @@
       transform: translateY(0);
     }
 
+    .event-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 120;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    .event-modal.open {
+      display: flex;
+    }
+
+    .event-modal-card {
+      width: min(690px, 100%);
+      max-height: 84vh;
+      overflow: hidden;
+      background: #efefef;
+      border: 2px solid var(--turmeric);
+      position: relative;
+      border-radius: 18px;
+    }
+
+    .event-modal-close {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.85rem;
+      width: 54px;
+      height: 54px;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.26);
+      color: #ffffff;
+      font-size: 2rem;
+      line-height: 1;
+      cursor: pointer;
+      z-index: 4;
+      display: grid;
+      place-content: center;
+    }
+
+    .event-modal-head {
+      padding: 0;
+      border-bottom: 1px solid var(--line);
+      background: #ece4e1;
+      position: relative;
+    }
+
+    .event-badge {
+      position: absolute;
+      top: 1.05rem;
+      left: 1.05rem;
+      background: #cf2a2a;
+      color: #fff;
+      padding: 0.35rem 0.95rem;
+      border-radius: 7px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      z-index: 3;
+    }
+
+    .event-modal-img {
+      width: 100%;
+      background: #ece4e1;
+      border-bottom: 1px solid var(--line);
+      height: clamp(290px, 49vh, 400px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.95rem 0.95rem 0.85rem;
+    }
+
+    .event-modal-img img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      object-position: top center;
+    }
+
+    .event-modal-body {
+      padding: 0.55rem 0.9rem 0.7rem;
+      background: #efefef;
+    }
+
+    .event-modal-meta {
+      color: #d59a2d;
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.4px;
+      margin-bottom: 0.2rem;
+      text-transform: uppercase;
+    }
+
+    .event-modal-title {
+      font-size: clamp(1.08rem, 2.6vw, 1.45rem);
+      line-height: 1.1;
+      margin-bottom: 0.2rem;
+      color: #1f2135;
+    }
+
+    .event-modal-copy {
+      color: #444;
+      font-size: 0.84rem;
+      line-height: 1.3;
+      margin-bottom: 0.28rem;
+      max-width: 62ch;
+    }
+
+    .event-modal-details p {
+      color: #1f2135;
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.22rem;
+    }
+
+    .event-modal-actions {
+      padding-top: 0.15rem;
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .event-modal-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.56rem 0.92rem;
+      border-radius: var(--r-sm);
+      border: 1px solid var(--telangana-red);
+      background: var(--telangana-red);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+    }
+
+    .event-modal-btn.secondary {
+      border-color: var(--line);
+      background: var(--white);
+      color: var(--text);
+    }
+
     @media (max-width: 1024px) {
       .post-hero-shell {
         grid-template-columns: 200px 1fr;
@@ -665,6 +882,12 @@
       .contact-grid {
         grid-template-columns: 1fr;
       }
+
+      .featured-flier {
+        width: min(100%, 310px);
+        max-width: 310px;
+        justify-self: start;
+      }
     }
 
     @media (max-width: 800px) {
@@ -676,6 +899,10 @@
       .hero,
       .hero-content {
         min-height: 48vh;
+      }
+
+      .slide-arrows {
+        bottom: 2.35rem;
       }
 
       .post-hero-shell {
@@ -736,9 +963,26 @@
         grid-template-columns: 1fr;
       }
 
+      .slide-arrows {
+        display: none;
+      }
+
       .culture-card:nth-child(1),
       .culture-card:nth-child(4) {
         grid-column: span 1;
+      }
+
+      .event-modal-img {
+        height: clamp(220px, 36vh, 300px);
+        padding: 0.7rem 0.7rem 0.65rem;
+      }
+
+      .event-modal-body {
+        padding: 0.5rem 0.75rem 0.7rem;
+      }
+
+      .event-modal-title {
+        font-size: 1.18rem;
       }
     }
   </style>
@@ -778,6 +1022,10 @@
           <h1 class="hero-title">Culture. Community. Telangana.</h1>
           <p class="hero-tagline">A home for Telangana families in Greater St. Louis through festivals, service, youth programs, and community support.</p>
         </div>
+      </div>
+      <div class="slide-arrows" aria-label="Hero slide navigation">
+        <button class="slide-arrow" id="slidePrev" aria-label="Previous slide">&#8592;</button>
+        <button class="slide-arrow" id="slideNext" aria-label="Next slide">&#8594;</button>
       </div>
       <div class="slide-dots" aria-label="Hero slide controls">
         <button class="slide-dot active" data-index="0" aria-label="Slide 1"></button>
@@ -851,12 +1099,11 @@
             </div>
             <aside class="featured-flier reveal" aria-label="Featured Event Flier">
               <div class="flier-art">
-                <strong>TAGS Annual Cultural Gala</strong>
-                <span>Featured Flier Placeholder</span>
+                <img src="/images/WhatsApp Image 2026-05-26 at 10.04.10 AM (1).jpeg" alt="Telangana Formation Day 2026 event flier" />
               </div>
               <div class="flier-copy">
-                <h4>Annual Cultural Gala</h4>
-                <p>Classical and folk performances, regional cuisine, and community celebration. Replace this block with your official flier image.</p>
+                <h4>Telangana Formation Day Celebration 2026</h4>
+                <p>June 6, 2026 · 3:00 PM to 7:00 PM · Durga Temple of St Louis, Wildwood, MO.</p>
               </div>
             </aside>
           </div>
@@ -880,24 +1127,26 @@
             <p class="section-lead">Gallery layout stays in place with a calm, flat treatment.</p>
           </div>
           <div class="culture-grid">
-            <article class="culture-card reveal">
-              <div class="culture-fill">Perini and folk dance photo</div>
+            <article class="culture-card culture-card--perini reveal">
+              <div class="perini-single">
+                <img src="/images/ccard1.png" alt="Perini dance performance" />
+              </div>
               <div class="culture-label">Perini Performances</div>
             </article>
             <article class="culture-card reveal">
-              <div class="culture-fill">Bathukamma photo</div>
+              <img class="culture-photo" src="/images/ccard2 .png" alt="Bathukamma celebration" />
               <div class="culture-label">Bathukamma</div>
             </article>
             <article class="culture-card reveal">
-              <div class="culture-fill">Cuisine photo</div>
+              <img class="culture-photo" src="/images/ccard 3.png" alt="Telangana cuisine community meal" />
               <div class="culture-label">Telangana Cuisine</div>
             </article>
             <article class="culture-card reveal">
-              <div class="culture-fill">Textiles photo</div>
+              <img class="culture-photo" src="/images/ccard4.png" alt="Ikat and handloom weaving heritage" />
               <div class="culture-label">Ikat and Handloom</div>
             </article>
             <article class="culture-card reveal">
-              <div class="culture-fill">Music photo</div>
+              <img class="culture-photo" src="/images/ccard5.png" alt="Folk and Sufi music performance" />
               <div class="culture-label">Folk and Sufi Music</div>
             </article>
           </div>
@@ -987,6 +1236,27 @@
     </div>
   </main>
 
+  <div class="event-modal" id="eventModal" role="dialog" aria-modal="true" aria-label="Upcoming event announcement">
+    <div class="event-modal-card">
+      <button class="event-modal-close" id="eventModalClose" aria-label="Close event popup">✕</button>
+      <div class="event-modal-head">
+        <span class="event-badge">🌟 Featured Event</span>
+      </div>
+      <div class="event-modal-img">
+        <img src="/images/WhatsApp Image 2026-05-26 at 10.04.10 AM (1).jpeg" alt="Telangana Formation Day 2026 event flier" />
+      </div>
+      <div class="event-modal-body">
+        <p class="event-modal-meta">📅 June 6, 2026 · 3:00 PM to 7:00 PM · Wildwood, MO</p>
+        <h3 class="event-modal-title">Telangana Formation Day Celebration 2026</h3>
+        <p class="event-modal-copy">Telangana pride, culture, and unity with the St. Louis community.</p>
+        <div class="event-modal-actions">
+          <a class="event-modal-btn" href="#events" id="eventModalView">View Event Details →</a>
+          <button class="event-modal-btn secondary" id="eventModalLater" type="button">Maybe Later</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <footer>
     <div class="container">
       <p>© 2026 TAGS - Telangana Association of Greater St. Louis</p>
@@ -1032,6 +1302,8 @@
 
     const slides = document.querySelectorAll(".hero-slide");
     const dots = document.querySelectorAll(".slide-dot");
+    const prevArrow = document.getElementById("slidePrev");
+    const nextArrow = document.getElementById("slideNext");
     let currentSlide = 0;
     let timer = null;
 
@@ -1055,7 +1327,49 @@
       });
     });
 
+    prevArrow?.addEventListener("click", () => {
+      goToSlide(currentSlide - 1);
+      startAutoSlides();
+    });
+
+    nextArrow?.addEventListener("click", () => {
+      goToSlide(currentSlide + 1);
+      startAutoSlides();
+    });
+
     startAutoSlides();
+
+    const eventModal = document.getElementById("eventModal");
+    const eventModalClose = document.getElementById("eventModalClose");
+    const eventModalLater = document.getElementById("eventModalLater");
+    const eventModalView = document.getElementById("eventModalView");
+
+    const openEventModal = () => {
+      if (!eventModal) return;
+      eventModal.classList.add("open");
+      document.body.style.overflow = "hidden";
+    };
+
+    const closeEventModal = () => {
+      if (!eventModal) return;
+      eventModal.classList.remove("open");
+      document.body.style.overflow = "";
+    };
+
+    window.addEventListener("load", () => {
+      setTimeout(openEventModal, 700);
+    });
+
+    eventModalClose?.addEventListener("click", closeEventModal);
+    eventModalLater?.addEventListener("click", closeEventModal);
+    eventModalView?.addEventListener("click", closeEventModal);
+    eventModal?.addEventListener("click", (event) => {
+      if (event.target === eventModal) closeEventModal();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeEventModal();
+    });
 
     const contactForm = document.getElementById("contactForm");
     contactForm?.addEventListener("submit", (event) => {
