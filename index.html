@@ -19,6 +19,8 @@
       --line: #e2e2e2;
       --paper: #fbfbfb;
       --white: #ffffff;
+      --newsletter-pink: #bd2767;
+      --newsletter-pink-hover: #a61f59;
       --container: 1240px;
       --r-sm: 6px;
       --r-md: 10px;
@@ -118,6 +120,40 @@
       flex-wrap: wrap;
     }
 
+    .utility-right {
+      gap: 0.7rem;
+    }
+
+    .newsletter-form {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+    }
+
+    .newsletter-form label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .newsletter-form input {
+      width: 185px;
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: var(--r-sm);
+      padding: 0.38rem 0.55rem;
+      font-family: inherit;
+      font-size: 0.84rem;
+      color: var(--ink);
+      background: var(--white);
+    }
+
+    .newsletter-form input:focus {
+      outline: 2px solid #f1d8a5;
+      border-color: var(--turmeric);
+    }
+
     .join-mini {
       display: inline-flex;
       align-items: center;
@@ -131,9 +167,31 @@
       transition: background var(--speed), border-color var(--speed);
     }
 
+    .newsletter-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.36rem 0.75rem;
+      border-radius: var(--r-sm);
+      border: 1px solid var(--newsletter-pink);
+      background: var(--newsletter-pink);
+      color: var(--white);
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.84rem;
+      line-height: 1.2;
+      cursor: pointer;
+      transition: background var(--speed), border-color var(--speed);
+    }
+
     .join-mini:hover {
       background: var(--telangana-maroon);
       border-color: var(--telangana-maroon);
+    }
+
+    .newsletter-btn:hover {
+      background: var(--newsletter-pink-hover);
+      border-color: var(--newsletter-pink-hover);
     }
 
     /* ── HERO: full-width, edge-to-edge ── */
@@ -158,6 +216,11 @@
 
     .hero-slide.active {
       opacity: 1;
+    }
+
+    .hero-slide.four {
+      background-color: #b65a43;
+      background-image: url("images/slideimg5.png");
     }
 
     .hero-slide.one {
@@ -253,10 +316,12 @@
 
     .hero-kicker {
       color: rgba(255, 255, 255, 0.9);
-      font-size: 0.9rem;
-      letter-spacing: 0.4px;
+      font-size: clamp(1.05rem, 1.85vw, 1.45rem);
+      letter-spacing: 0.2px;
+      line-height: 1.2;
       text-transform: uppercase;
       font-weight: 700;
+      max-width: 32ch;
     }
 
     .hero-title {
@@ -344,6 +409,51 @@
       color: var(--telangana-red);
       border-left-color: var(--turmeric);
       background: #f6f1e5;
+    }
+
+    .ad-banner {
+      margin: 0.45rem;
+      min-height: 430px;
+      border: 1px solid #e5c877;
+      background: linear-gradient(180deg, #fff8df 0%, #f7e6af 100%);
+      display: grid;
+      align-content: space-between;
+      gap: 1rem;
+      padding: 1rem;
+      color: var(--ink);
+    }
+
+    .ad-banner-kicker {
+      color: var(--telangana-red);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .ad-banner-title {
+      font-family: "Tiro Devanagari Hindi", serif;
+      font-size: 1.65rem;
+      line-height: 1.1;
+      margin-top: 0.5rem;
+    }
+
+    .ad-banner-copy {
+      color: var(--text);
+      font-size: 0.92rem;
+      line-height: 1.45;
+    }
+
+    .ad-banner-link {
+      display: inline-flex;
+      width: fit-content;
+      border: 1px solid var(--telangana-red);
+      border-radius: var(--r-sm);
+      background: var(--telangana-red);
+      color: var(--white);
+      font-size: 0.86rem;
+      font-weight: 700;
+      padding: 0.45rem 0.7rem;
     }
 
     .content-stack section {
@@ -516,8 +626,19 @@
     #membership,
     #culture,
     #board,
+    #sponsors {
+      scroll-margin-top: 76px;
+    }
+
     #contact {
       scroll-margin-top: 76px;
+    }
+
+    .membership-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(220px, 320px);
+      gap: 1.5rem;
+      align-items: start;
     }
 
     .membership-simple p {
@@ -525,6 +646,36 @@
       margin-bottom: 1rem;
       font-size: 1.02rem;
       max-width: 70ch;
+    }
+
+    .membership-flier {
+      justify-self: end;
+      width: min(100%, 320px);
+      aspect-ratio: 886 / 1065;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--paper);
+    }
+
+    .membership-flier img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .membership-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+      margin-top: 0.8rem;
+    }
+
+    .membership-newsletter {
+      padding: 0.55rem;
+      border: 1px solid var(--line);
+      background: var(--paper);
     }
 
     .join-btn {
@@ -657,6 +808,85 @@
       color: var(--muted);
     }
 
+    .sponsor-carousel {
+      border: 1px solid var(--line);
+      background: var(--white);
+      overflow: hidden;
+      padding: 1rem 0;
+      position: relative;
+    }
+
+    .sponsor-carousel::before,
+    .sponsor-carousel::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 56px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .sponsor-carousel::before {
+      left: 0;
+      background: linear-gradient(90deg, var(--white), rgba(255, 255, 255, 0));
+    }
+
+    .sponsor-carousel::after {
+      right: 0;
+      background: linear-gradient(270deg, var(--white), rgba(255, 255, 255, 0));
+    }
+
+    .sponsor-track {
+      display: flex;
+      width: max-content;
+      animation: sponsorScroll 26s linear infinite;
+    }
+
+    .sponsor-carousel:hover .sponsor-track {
+      animation-play-state: paused;
+    }
+
+    .sponsor-group {
+      display: flex;
+      gap: 0.9rem;
+      padding-right: 0.9rem;
+      flex: 0 0 auto;
+    }
+
+    .sponsor-card {
+      flex: 0 0 190px;
+      min-height: 112px;
+      border: 1px solid var(--line);
+      background: #fbf8ef;
+      display: grid;
+      place-content: center;
+      text-align: center;
+      padding: 0.95rem;
+    }
+
+    .sponsor-name {
+      color: var(--ink);
+      font-weight: 800;
+      font-size: 1rem;
+      line-height: 1.25;
+    }
+
+    .sponsor-tier {
+      color: var(--telangana-red);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-top: 0.35rem;
+    }
+
+    @keyframes sponsorScroll {
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
     .contact-grid {
       display: grid;
       grid-template-columns: 1.15fr 1fr;
@@ -735,12 +965,52 @@
       margin-top: 1.5rem;
       background: #1f2135;
       color: rgba(255, 255, 255, 0.72);
-      padding: 1.7rem 0;
+      padding: 1.8rem 0;
     }
 
-    footer p {
-      text-align: center;
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    .footer-brand p,
+    .footer-contact-card p {
       font-size: 0.9rem;
+    }
+
+    .footer-brand h2,
+    .footer-contact-card h2 {
+      color: var(--white);
+      font-size: 1.25rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .footer-contact-card {
+      justify-self: end;
+      width: min(100%, 520px);
+    }
+
+    .footer-contact-card .contact-lines {
+      margin-bottom: 0.9rem;
+    }
+
+    .footer-contact-card .contact-lines p {
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .footer-contact-form {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-contact-form label {
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .footer-contact-form .message-field,
+    .footer-contact-form .btn-submit {
+      grid-column: 1 / -1;
     }
 
     .reveal {
@@ -910,10 +1180,27 @@
         grid-template-columns: repeat(3, 1fr);
       }
 
+      .membership-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .membership-flier {
+        justify-self: start;
+        width: min(100%, 340px);
+      }
+
       .events-layout,
       .about-columns,
       .contact-grid {
         grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-contact-card {
+        justify-self: start;
       }
 
       .featured-flier {
@@ -969,6 +1256,10 @@
         border-bottom-color: var(--turmeric);
       }
 
+      .ad-banner {
+        min-height: 240px;
+      }
+
       .culture-grid {
         grid-template-columns: 1fr 1fr;
       }
@@ -982,12 +1273,63 @@
       .board-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+
+      .footer-contact-form {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-contact-form .message-field,
+      .footer-contact-form .btn-submit {
+        grid-column: auto;
+      }
     }
 
     @media (max-width: 540px) {
       .utility-row .container {
         align-items: flex-start;
         justify-content: flex-start;
+      }
+
+      .utility-left,
+      .utility-right,
+      .newsletter-top,
+      .membership-newsletter {
+        width: 100%;
+      }
+
+      .newsletter-top label {
+        width: 100%;
+      }
+
+      .newsletter-form input {
+        flex: 1 1 128px;
+        width: auto;
+      }
+
+      .membership-actions {
+        align-items: stretch;
+      }
+
+      .membership-actions .join-btn,
+      .membership-newsletter .newsletter-btn {
+        justify-content: center;
+      }
+
+      .membership-actions .join-btn {
+        width: 100%;
+      }
+
+      .ad-banner {
+        min-height: 220px;
+      }
+
+      .sponsor-carousel::before,
+      .sponsor-carousel::after {
+        width: 32px;
+      }
+
+      .sponsor-card {
+        flex-basis: 165px;
       }
 
       .culture-grid {
@@ -1047,6 +1389,7 @@
           <span>Email: info@tagsstl.org</span>
         </div>
         <div class="utility-right">
+          <a class="newsletter-btn newsletter-top" href="#membership">Join Newsletter</a>
           <a href="#" aria-label="Facebook">Facebook</a>
           <a href="#" aria-label="Instagram">Instagram</a>
           <a href="#" aria-label="YouTube">YouTube</a>
@@ -1058,7 +1401,8 @@
 
   <main>
     <section id="home" class="hero">
-      <div class="hero-slide one active"></div>
+      <div class="hero-slide four active"></div>
+      <div class="hero-slide one"></div>
       <div class="hero-slide two"></div>
       <div class="hero-slide three"></div>
       <div class="hero-overlay"></div>
@@ -1082,6 +1426,7 @@
         <button class="slide-dot active" data-index="0" aria-label="Slide 1"></button>
         <button class="slide-dot" data-index="1" aria-label="Slide 2"></button>
         <button class="slide-dot" data-index="2" aria-label="Slide 3"></button>
+        <button class="slide-dot" data-index="3" aria-label="Slide 4"></button>
       </div>
     </section>
 
@@ -1095,9 +1440,17 @@
             <li><a href="#membership">Membership</a></li>
             <li><a href="#culture">Culture</a></li>
             <li><a href="#board">Board</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#sponsors">Sponsors</a></li>
           </ul>
         </nav>
+        <div class="ad-banner" aria-label="Advertisement">
+          <div>
+            <p class="ad-banner-kicker">Ad Space</p>
+            <p class="ad-banner-title">Support Community Events</p>
+          </div>
+          <p class="ad-banner-copy">Promote your business to TAGS families across Greater St. Louis.</p>
+          <a class="ad-banner-link" href="#contact">Advertise</a>
+        </div>
       </aside>
 
       <div class="content-stack">
@@ -1166,8 +1519,22 @@
               <span class="section-tag">Membership</span>
               <h2>Join TAGS</h2>
             </div>
-            <p>Membership keeps you connected to events, volunteering, youth programs, and the larger Telangana network in St. Louis.</p>
-            <a class="join-btn" href="#contact">Become a Member</a>
+            <div class="membership-layout">
+              <div class="membership-copy">
+                <p>Membership keeps you connected to events, volunteering, youth programs, and the larger Telangana network in St. Louis.</p>
+                <div class="membership-actions">
+                  <a class="join-btn" href="#contact">Become a Member</a>
+                  <form class="newsletter-form membership-newsletter" aria-label="Membership newsletter signup">
+                    <label for="newsletterMember">Newsletter</label>
+                    <input id="newsletterMember" name="email" type="email" placeholder="Email address" required />
+                    <button class="newsletter-btn" type="submit">Join Newsletter</button>
+                  </form>
+                </div>
+              </div>
+              <figure class="membership-flier">
+                <img src="images/joinflier.jpeg" alt="Become a TAGS member flier" loading="lazy" />
+              </figure>
+            </div>
           </div>
         </section>
 
@@ -1241,35 +1608,67 @@
           </div>
         </section>
 
-        <section id="contact">
+        <section id="sponsors">
           <div class="section-head reveal">
-            <span class="section-tag">Contact</span>
-            <h2>Contact TAGS</h2>
+            <span class="section-tag">Sponsors</span>
+            <h2>Community Sponsors</h2>
+            <p class="section-lead">Rotating recognition for the businesses and families that help make TAGS programs possible.</p>
           </div>
-          <div class="contact-grid">
-            <div class="contact-card reveal">
-              <h3>Reach Us</h3>
-              <div class="contact-lines">
-                <p>Email: info@tagsstl.org</p>
-                <p>Location: Greater St. Louis Metropolitan Area</p>
-                <p>Phone: +1 (314) 000-0000</p>
+          <div class="sponsor-carousel reveal" aria-label="Sponsor carousel">
+            <div class="sponsor-track">
+              <div class="sponsor-group">
+                <article class="sponsor-card">
+                  <p class="sponsor-name">St. Louis Telugu Foods</p>
+                  <p class="sponsor-tier">Diamond Sponsor</p>
+                </article>
+                <article class="sponsor-card">
+                  <p class="sponsor-name">Gateway Realty Partners</p>
+                  <p class="sponsor-tier">Gold Sponsor</p>
+                </article>
+                <article class="sponsor-card">
+                  <p class="sponsor-name">Sri Sai Grocers</p>
+                  <p class="sponsor-tier">Gold Sponsor</p>
+                </article>
+                <article class="sponsor-card">
+                  <p class="sponsor-name">Midwest IT Solutions</p>
+                  <p class="sponsor-tier">Silver Sponsor</p>
+                </article>
+                <article class="sponsor-card">
+                  <p class="sponsor-name">Wildwood Family Dental</p>
+                  <p class="sponsor-tier">Community Partner</p>
+                </article>
+                <article class="sponsor-card">
+                  <p class="sponsor-name">TAGS Family Patrons</p>
+                  <p class="sponsor-tier">Community Partner</p>
+                </article>
+              </div>
+              <div class="sponsor-group" aria-hidden="true">
+                <article class="sponsor-card">
+                  <p class="sponsor-name">St. Louis Telugu Foods</p>
+                  <p class="sponsor-tier">Diamond Sponsor</p>
+                </article>
+                <article class="sponsor-card">
+                  <p class="sponsor-name">Gateway Realty Partners</p>
+                  <p class="sponsor-tier">Gold Sponsor</p>
+                </article>
+                <article class="sponsor-card">
+                  <p class="sponsor-name">Sri Sai Grocers</p>
+                  <p class="sponsor-tier">Gold Sponsor</p>
+                </article>
+                <article class="sponsor-card">
+                  <p class="sponsor-name">Midwest IT Solutions</p>
+                  <p class="sponsor-tier">Silver Sponsor</p>
+                </article>
+                <article class="sponsor-card">
+                  <p class="sponsor-name">Wildwood Family Dental</p>
+                  <p class="sponsor-tier">Community Partner</p>
+                </article>
+                <article class="sponsor-card">
+                  <p class="sponsor-name">TAGS Family Patrons</p>
+                  <p class="sponsor-tier">Community Partner</p>
+                </article>
               </div>
             </div>
-            <form class="contact-card contact-form reveal" id="contactForm">
-              <div>
-                <label for="name">Name</label>
-                <input id="name" name="name" type="text" required />
-              </div>
-              <div>
-                <label for="email">Email</label>
-                <input id="email" name="email" type="email" required />
-              </div>
-              <div>
-                <label for="message">Message</label>
-                <textarea id="message" name="message" required></textarea>
-              </div>
-              <button class="btn-submit" type="submit">Send Message</button>
-            </form>
           </div>
         </section>
       </div>
@@ -1280,7 +1679,7 @@
     <div class="event-modal-card">
       <button class="event-modal-close" id="eventModalClose" aria-label="Close event popup">✕</button>
       <div class="event-modal-head">
-        <span class="event-badge">Featured Event</span>
+        <span class="event-badge">🌟 Featured Event</span>
       </div>
       <div class="event-modal-img">
         <img src="images/eventflier.jpeg" alt="Telangana Formation Day 2026 event flier" />
@@ -1297,9 +1696,35 @@
     </div>
   </div>
 
-  <footer>
-    <div class="container">
-      <p>© 2026 TAGS - Telangana Association of Greater St. Louis</p>
+  <footer id="contact">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <h2>TAGS</h2>
+        <p>© 2026 TAGS - Telangana Association of Greater St. Louis</p>
+      </div>
+      <div class="footer-contact-card">
+        <h2>Contact TAGS</h2>
+        <div class="contact-lines">
+          <p>Email: info@tagsstl.org</p>
+          <p>Location: Greater St. Louis Metropolitan Area</p>
+          <p>Phone: +1 (314) 000-0000</p>
+        </div>
+        <form class="contact-form footer-contact-form" id="contactForm">
+          <div>
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required />
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required />
+          </div>
+          <div class="message-field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <button class="btn-submit" type="submit">Send Message</button>
+        </form>
+      </div>
     </div>
   </footer>
 
@@ -1346,6 +1771,7 @@
     const nextArrow = document.getElementById("slideNext");
     let currentSlide = 0;
     let timer = null;
+    let carouselAutoStarted = false;
 
     const goToSlide = (idx) => {
       slides[currentSlide].classList.remove("active");
@@ -1356,6 +1782,7 @@
     };
 
     const startAutoSlides = () => {
+      carouselAutoStarted = true;
       clearInterval(timer);
       timer = setInterval(() => goToSlide(currentSlide + 1), 5600);
     };
@@ -1363,21 +1790,19 @@
     dots.forEach((dot) => {
       dot.addEventListener("click", () => {
         goToSlide(Number(dot.dataset.index));
-        startAutoSlides();
+        if (carouselAutoStarted) startAutoSlides();
       });
     });
 
     prevArrow?.addEventListener("click", () => {
       goToSlide(currentSlide - 1);
-      startAutoSlides();
+      if (carouselAutoStarted) startAutoSlides();
     });
 
     nextArrow?.addEventListener("click", () => {
       goToSlide(currentSlide + 1);
-      startAutoSlides();
+      if (carouselAutoStarted) startAutoSlides();
     });
-
-    startAutoSlides();
 
     const eventModal = document.getElementById("eventModal");
     const eventModalClose = document.getElementById("eventModalClose");
@@ -1396,19 +1821,40 @@
       document.body.style.overflow = "";
     };
 
+    const closeEventModalAndStartSlides = () => {
+      closeEventModal();
+      startAutoSlides();
+    };
+
     window.addEventListener("load", () => {
       setTimeout(openEventModal, 700);
     });
 
-    eventModalClose?.addEventListener("click", closeEventModal);
-    eventModalLater?.addEventListener("click", closeEventModal);
-    eventModalView?.addEventListener("click", closeEventModal);
+    eventModalClose?.addEventListener("click", closeEventModalAndStartSlides);
+    eventModalLater?.addEventListener("click", closeEventModalAndStartSlides);
+    eventModalView?.addEventListener("click", closeEventModalAndStartSlides);
     eventModal?.addEventListener("click", (event) => {
       if (event.target === eventModal) closeEventModal();
     });
 
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape") closeEventModal();
+    });
+
+    document.querySelectorAll(".newsletter-form").forEach((form) => {
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const btn = form.querySelector(".newsletter-btn");
+        if (!btn) return;
+        const original = btn.textContent;
+        btn.textContent = "Joined";
+        btn.disabled = true;
+        setTimeout(() => {
+          btn.textContent = original;
+          btn.disabled = false;
+          form.reset();
+        }, 1700);
+      });
     });
 
     const contactForm = document.getElementById("contactForm");
